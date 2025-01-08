@@ -28,23 +28,6 @@ from strings import get_string
 @LanguageStart
 async def start_pm(client, message: Message, _):
     await add_served_user(message.from_user.id)
-    
-    # Typing effect part
-    typing_message = await message.reply("<b>𝖣ɪɴɢ..𝖣ᴏɴɢ..❤️‍🔥</b>")  # Initial message
-    
-    # Simulate typing
-    typing_text = "<b>𝖲ᴛᴀʀᴛɪɴɢ...❤️‍🔥</b>"
-    
-    for i in range(1, len(typing_text) + 1):  # Loop through each character
-        try:
-            await typing_message.edit_text(typing_text[:i])
-            await asyncio.sleep(0.001)  # Add delay to simulate typing
-        except Exception as e:
-            print(f"Error while editing message: {e}")  # Print error if occurs
-
-    await asyncio.sleep(2)  # Keep message for a while
-    await typing_message.delete()  # Delete the message
-
     # Continue with the existing logic after typing effect
     if len(message.text.split()) > 1:
         name = message.text.split(None, 1)[1]
